@@ -2,12 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import AuthContext from './utilities/contexts/AuthContext';
 import reportWebVitals from './reportWebVitals';
-
+import {QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+  <QueryClientProvider client={queryClient}>
+      <AuthContext>
+        <App />
+      </AuthContext>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
